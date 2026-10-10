@@ -1,0 +1,22 @@
+{
+  "pack_id": "core",
+  "version": "0.1.0",
+  "schema_version": 2,
+  "file": "core.sqlite",
+  "bytes": 10838016,
+  "sha256": "d12c3a1e525466dd25ccb957cad6d61c775509311e505e3832ff7a77bcc2dfa1",
+  "counts": {
+    "surahs": 114,
+    "ayahs": 6236
+  },
+  "sources": [
+    "tanzil-quran-uthmani",
+    "tanzil-quran-simple-clean",
+    "tanzil-metadata",
+    "tanzil-trans-ur-jalandhry",
+    "geonames-cities15000",
+    "geonames-admin1",
+    "geonames-countryinfo",
+    "noaa-wmm2025-cof"
+  ]
+}

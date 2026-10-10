@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "updated_at": "2026-10-10",
+  "hijri": {
+    "default_adjust": 0,
+    "by_country": { "IN": 0, "PK": 0, "BD": 0, "NP": 0, "LK": 0 },
+    "note": "Days added to the Umm al-Qura date. Set after the local hilal committee announcement (see docs/MAINTENANCE.md)."
+  }
+}
