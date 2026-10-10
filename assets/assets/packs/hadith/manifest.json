@@ -1,0 +1,35 @@
+{
+  "pack_id": "hadith",
+  "version": "0.1.0",
+  "schema_version": 1,
+  "file": "hadith.sqlite",
+  "bytes": 22466560,
+  "sha256": "f44265c3ea4ec3b3bf086c4a0903a816e39080284fb7aa43841c5ec0f008a274",
+  "counts": {
+    "bukhari": {
+      "hadiths": 7580,
+      "books": 97,
+      "unassigned_book": 6,
+      "approved": 0,
+      "in_review": 7540,
+      "draft": 40
+    },
+    "muslim": {
+      "hadiths": 7360,
+      "books": 57,
+      "unassigned_book": 6,
+      "approved": 0,
+      "in_review": 7338,
+      "draft": 22
+    }
+  },
+  "approved": 0,
+  "sources": [
+    "fawaz-hadith-ara-bukhari",
+    "fawaz-hadith-ara-muslim"
+  ],
+  "crosscheck": [
+    "openiti-bukhari-sahih",
+    "openiti-muslim-sahih"
+  ]
+}
