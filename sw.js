@@ -2,7 +2,7 @@
 // Strategy: precache the app shell, then cache-first for every same-origin GET (engine, fonts, Quran pack),
 // so after one full online visit the app opens and works without internet. A new build changes VERSION,
 // which installs a fresh cache and deletes the old one.
-const VERSION = '8e3cd8bcc4fe';
+const VERSION = '536a86d3f7da';
 const CACHE = `deen-aur-dunya-${VERSION}`;
 const SHELL = ['./', 'index.html', 'flutter_bootstrap.js', 'main.dart.js', 'manifest.json', 'favicon.png', 'sqlite3.wasm'];
 
@@ -28,6 +28,17 @@ self.addEventListener('fetch', (event) => {
       caches.open(CACHE).then((c) => c.put('index.html', copy));
       return res;
     }).catch(() => caches.match('index.html')));
+    return;
+  }
+  // Remote config must reach existing installs without a new build: network first, cached copy when offline.
+  if (new URL(req.url).pathname.endsWith('/remote-config.json')) {
+    event.respondWith(fetch(req).then((res) => {
+      if (res.ok) {
+        const copy = res.clone();
+        caches.open(CACHE).then((c) => c.put(req, copy));
+      }
+      return res;
+    }).catch(() => caches.match(req)));
     return;
   }
   event.respondWith(
