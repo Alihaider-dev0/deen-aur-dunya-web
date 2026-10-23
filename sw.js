@@ -2,9 +2,9 @@
 // Strategy: precache the app shell, then cache-first for every same-origin GET (engine, fonts, Quran pack),
 // so after one full online visit the app opens and works without internet. A new build changes VERSION,
 // which installs a fresh cache and deletes the old one.
-const VERSION = '536a86d3f7da';
+const VERSION = '4bc95a458019';
 const CACHE = `deen-aur-dunya-${VERSION}`;
-const SHELL = ['./', 'index.html', 'flutter_bootstrap.js', 'main.dart.js', 'manifest.json', 'favicon.png', 'sqlite3.wasm'];
+const SHELL = ['./', 'index.html', 'splash.js', 'flutter_bootstrap.js', 'main.dart.js', 'manifest.json', 'favicon.png', 'sqlite3.wasm'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));

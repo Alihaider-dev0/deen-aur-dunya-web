@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- Content Security Policy (audit 2026-10-19, web-no-csp). GitHub Pages cannot send headers, so it is a meta tag;
+       it must stay the first element of <head>. No inline scripts (splash.js); wasm for CanvasKit and sqlite3.
+       Outside hosts: Supabase (optional login), everyayah.com (recitation audio), fonts.gstatic.com (engine font
+       fallback). Add a host here before the app calls it. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://zdpdipwkffrbvqqweemf.supabase.co https://fonts.gstatic.com; media-src 'self' blob: https://everyayah.com; worker-src 'self' blob:; frame-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'">
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
@@ -18,13 +23,14 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Deen + Dunya: Quran, Hadith, Namaz and study tracker (working name)">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Deen aur Dunya">
-  <meta name="theme-color" content="#0F5C4A">
+  <meta name="theme-color" content="#1F5C4A">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
@@ -32,8 +38,49 @@
 
   <title>Deen aur Dunya</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- Start-up screen (UX audit §5.7): shown from the first byte until the app has drawn its first real frame, so
+       the ~15 MB first load is never a blank page. Same Calm Premium colours as the app (lib/core/theme.dart). -->
+  <style>
+    :root { --bg: #FAF8F4; --ink: #1C2622; --muted: #5F6B65; --brand: #1F5C4A; --gold: #B08D57; --track: #E7E2D9; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #0E1412; --ink: #E6ECE8; --muted: #A2AEA8; --brand: #7CC4A4; --gold: #D2B47E; --track: #26312C; }
+    }
+    html, body { margin: 0; height: 100%; background: var(--bg); }
+    #splash {
+      position: fixed; inset: 0; z-index: 9999; display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 18px; padding: 16px; background: var(--bg); color: var(--ink);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif; text-align: center;
+      transition: opacity 220ms ease-out;
+    }
+    #splash.gone { opacity: 0; pointer-events: none; }
+    .star { position: relative; width: 64px; height: 64px; }
+    .star::before, .star::after {
+      content: ""; position: absolute; inset: 9px; border: 3px solid var(--gold); border-radius: 2px;
+    }
+    .star::after { transform: rotate(45deg); }
+    .name { font-size: 22px; font-weight: 700; color: var(--brand); letter-spacing: .2px; }
+    .name-ur { font-size: 20px; color: var(--brand); font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Noto Naskh Arabic", serif; }
+    .bar { width: min(220px, 60vw); height: 6px; border-radius: 3px; background: var(--track); overflow: hidden; }
+    .bar > i { display: block; height: 100%; width: 12%; background: var(--brand); border-radius: 3px; transition: width 600ms ease-out; }
+    .msg { font-size: 15px; color: var(--muted); line-height: 1.7; }
+    @media (prefers-reduced-motion: reduce) { #splash, .bar > i { transition: none; } }
+  </style>
 </head>
 <body>
+  <div id="splash" role="status" aria-live="polite">
+    <div class="star" aria-hidden="true"></div>
+    <div>
+      <div class="name">Deen aur Dunya</div>
+      <div class="name-ur" lang="ur" dir="rtl">دین اور دنیا</div>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="splash-bar"></i></div>
+    <div class="msg">
+      <span>Loading…</span> · <span lang="hi-Latn">Khul raha hai…</span><br>
+      <span lang="ur" dir="rtl">لوڈ ہو رہا ہے…</span> · <span lang="hi">खुल रहा है…</span>
+    </div>
+  </div>
+  <script src="splash.js"></script>
   <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader
@@ -43,11 +90,5 @@
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
   <script src="flutter_bootstrap.js" async></script>
-  <script>
-    // Offline support (sw.js). Registered after load so it never delays the first paint.
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js'); });
-    }
-  </script>
 </body>
 </html>

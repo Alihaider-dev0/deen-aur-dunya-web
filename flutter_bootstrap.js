@@ -42,4 +42,15 @@ _flutter.buildConfig = {"engineRevision":"692136cb6582dbfc5af3fb33c2515a069f2f66
 
 
 // Load without Flutter's (deprecated, self-unregistering) service worker; offline support comes from our sw.js.
-_flutter.loader.load();
+// Each start-up stage moves the splash bar in index.html (https://docs.flutter.dev/platform-integration/web/initialization).
+function splashStep(n) {
+  if (window.setSplashStep) window.setSplashStep(n);
+}
+_flutter.loader.load({
+  onEntrypointLoaded: async function (engineInitializer) {
+    splashStep(2);
+    const appRunner = await engineInitializer.initializeEngine();
+    splashStep(3);
+    await appRunner.runApp();
+  },
+});

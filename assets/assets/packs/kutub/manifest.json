@@ -1,0 +1,36 @@
+{
+  "pack": "kutub",
+  "file": "kutub.sqlite",
+  "schema": 1,
+  "version": "0.1.0",
+  "approved": 0,
+  "counts": {
+    "quduri": {
+      "paragraphs": 1978,
+      "headings": 118,
+      "flagged": 1
+    },
+    "nur_al_idah": {
+      "paragraphs": 784,
+      "headings": 379,
+      "flagged": 1
+    },
+    "usul_shashi": {
+      "paragraphs": 940,
+      "headings": 132,
+      "flagged": 1
+    },
+    "kafiya": {
+      "paragraphs": 585,
+      "headings": 104,
+      "flagged": 1
+    },
+    "shafiya": {
+      "paragraphs": 386,
+      "headings": 36,
+      "flagged": 2
+    }
+  },
+  "sha256": "bf69254768c60c22c35dac09cb1e02c7a44c24cd323e6cb5eeedd8b7ae0821f4",
+  "bytes": 2383872
+}

@@ -1,0 +1,24 @@
+{
+  "pack": "morph",
+  "file": "morph.sqlite",
+  "schema": 1,
+  "version": "0.1.0",
+  "approved": 0,
+  "counts": {
+    "words": 77429,
+    "aligned": 77376,
+    "roots": 1642,
+    "lemmas": 5155,
+    "coverage": {
+      "50": 43.5,
+      "100": 53,
+      "200": 62.7,
+      "300": 68.6,
+      "500": 75.8,
+      "600": 78.2,
+      "1000": 84.1
+    }
+  },
+  "sha256": "e03233ca2fbb8ff94c3fec5701ee60019cb6f8ddd5c343eb8626d4bc85976b0b",
+  "bytes": 5758976
+}
