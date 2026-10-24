@@ -1,10 +1,21 @@
 {
+  "format": "signed-v1",
+  "kid": "rc1",
+  "payload": "eyJzY2hlbWEiOjEsInZlcnNpb24iOjEsInVwZGF0ZWRfYXQiOiIyMDI2LTEwLTI0IiwiZmVhdHVyZXMiOnsibG9naW4iOmZhbHNlfSwiaGlqcmkiOnsiZGVmYXVsdF9hZGp1c3QiOjAsImJ5X2NvdW50cnkiOnsiSU4iOjAsIlBLIjowLCJCRCI6MCwiTlAiOjAsIkxLIjowfSwibm90ZSI6IkRheXMgYWRkZWQgdG8gdGhlIFVtbSBhbC1RdXJhIGRhdGUuIFNldCBhZnRlciB0aGUgbG9jYWwgaGlsYWwgY29tbWl0dGVlIGFubm91bmNlbWVudCAoc2VlIGRvY3MvTUFJTlRFTkFOQ0UubWQpLiJ9fQ==",
+  "sig": "aWccbTb/74p0y9/Mtp2ZSeb0fz0ttDSeOmUXvRTMKJuth2ub85SS5FXeH3DWIA0i8GbtQMzD2xm7JGEe+cOsDw==",
   "schema": 1,
-  "updated_at": "2026-10-11",
-  "features": { "login": true },
+  "features": {
+    "login": false
+  },
   "hijri": {
     "default_adjust": 0,
-    "by_country": { "IN": 0, "PK": 0, "BD": 0, "NP": 0, "LK": 0 },
+    "by_country": {
+      "IN": 0,
+      "PK": 0,
+      "BD": 0,
+      "NP": 0,
+      "LK": 0
+    },
     "note": "Days added to the Umm al-Qura date. Set after the local hilal committee announcement (see docs/MAINTENANCE.md)."
   }
 }

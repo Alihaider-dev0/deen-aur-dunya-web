@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Served at the root of the Pages site (tools/deploy-web.ps1). Update the URLs if a custom domain is added. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://alihaider-dev0.github.io/deen-aur-dunya-web/about/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://alihaider-dev0.github.io/deen-aur-dunya-web/about/privacy.html</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://alihaider-dev0.github.io/deen-aur-dunya-web/about/delete-account.html</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://alihaider-dev0.github.io/deen-aur-dunya-web/</loc></url>
+</urlset>

@@ -2,7 +2,7 @@
 // Strategy: precache the app shell, then cache-first for every same-origin GET (engine, fonts, Quran pack),
 // so after one full online visit the app opens and works without internet. A new build changes VERSION,
 // which installs a fresh cache and deletes the old one.
-const VERSION = '4bc95a458019';
+const VERSION = 'e4fc1a2fb583';
 const CACHE = `deen-aur-dunya-${VERSION}`;
 const SHELL = ['./', 'index.html', 'splash.js', 'flutter_bootstrap.js', 'main.dart.js', 'manifest.json', 'favicon.png', 'sqlite3.wasm'];
 
@@ -21,6 +21,9 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
+  // The static pages under about/ (landing, privacy, account deletion) are plain HTML, not part of the app: the
+  // browser loads them directly. Otherwise opening one would be stored below as the offline app shell.
+  if (new URL(req.url).pathname.startsWith(new URL('about/', self.registration.scope).pathname)) return;
   // Navigations: network first (fresh index.html), fall back to the cached shell when offline.
   if (req.mode === 'navigate') {
     event.respondWith(fetch(req).then((res) => {

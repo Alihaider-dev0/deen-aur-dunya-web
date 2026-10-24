@@ -1,0 +1,6 @@
+# Search engines read robots.txt only at the root of a host. On github.io this file sits under
+# /deen-aur-dunya-web/, so it takes effect only once the site has its own domain (docs/OWNER_CHECKLIST.md).
+User-agent: *
+Allow: /
+
+Sitemap: https://alihaider-dev0.github.io/deen-aur-dunya-web/sitemap.xml

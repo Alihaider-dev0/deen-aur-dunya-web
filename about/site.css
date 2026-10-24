@@ -1,0 +1,53 @@
+/* Deen aur Dunya — static site (landing, privacy policy, account deletion). Calm Premium colours (app/lib/core/theme.dart);
+   no images of living beings, no web fonts, no scripts. */
+:root {
+  --bg: #FAF8F4; --surface: #FFFFFF; --sunken: #F3F0EA; --line: #E7E2D9;
+  --ink: #1C2622; --muted: #5F6B65; --primary: #1F5C4A; --primary-soft: #E4EFEA; --gold: #7A5B2E;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0E1412; --surface: #151C19; --sunken: #1C2521; --line: #26312C;
+    --ink: #E6ECE8; --muted: #A2AEA8; --primary: #7CC4A4; --primary-soft: #1E3A30; --gold: #D2B47E;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 32px max(16px, env(safe-area-inset-left)) 56px; }
+header.site { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 28px; }
+header.site img { width: 44px; height: 44px; border-radius: 10px; }
+header.site > a { color: var(--ink); text-decoration: none; font-weight: 700; font-size: 18px; white-space: nowrap; }
+nav.site { margin-left: auto; display: flex; gap: 16px; flex-wrap: wrap; font-size: 15px; }
+@media (max-width: 480px) { nav.site { margin-left: 0; width: 100%; } }
+nav.site a { color: var(--primary); font-weight: 600; }
+h1 { font-size: clamp(28px, 6vw, 38px); line-height: 1.2; margin: 0 0 12px; text-wrap: balance; }
+h2 { font-size: 21px; margin: 32px 0 8px; }
+p.lead { color: var(--muted); font-size: 19px; margin: 0 0 20px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; margin: 16px 0; }
+.note { background: var(--primary-soft); border-radius: 12px; padding: 14px 16px; }
+ol li, ul li { margin: 6px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; border-bottom: 1px solid var(--line); padding: 8px 6px; vertical-align: top; }
+.table-wrap { overflow-x: auto; }
+a { color: var(--primary); }
+code, .mono { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.92em; }
+footer.site { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+h3 { font-size: 18px; margin: 0 0 6px; }
+.card > :first-child { margin-top: 0; }
+.card > :last-child { margin-bottom: 0; }
+.hero { padding: 8px 0 12px; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 20px 0 0; }
+.button {
+  display: inline-block; background: var(--primary); color: var(--bg); text-decoration: none; font-weight: 700;
+  padding: 12px 20px; border-radius: 12px; min-height: 48px;
+}
+.button:focus-visible, a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.badge { color: var(--muted); font-size: 15px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.grid .card { margin: 0; }
+.ur { font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Noto Naskh Arabic", serif; line-height: 2.1; }
